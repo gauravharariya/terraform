@@ -3,7 +3,6 @@ name: 'Terraform'
 on:
   push:
     branches: [ "terraform-testing" ]
-  pull_request:
   workflow_dispatch:
 
 permissions:
