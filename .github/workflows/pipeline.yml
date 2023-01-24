@@ -1,8 +1,6 @@
 name: 'Terraform'
 #testing
 on:
-  push:
-    branches: [ "terraform-testing" ]
   workflow_dispatch:
 
 permissions:
