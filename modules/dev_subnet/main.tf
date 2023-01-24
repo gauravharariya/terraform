@@ -11,7 +11,7 @@ resource "aws_subnet" "dev_subnet_public" {
 }
 
 resource "aws_subnet" "dev_subnet_private" {
-  cidr_block              = "10.0.0.1/22"
+  cidr_block              = "10.0.0.0/22"
   vpc_id                  = var.dev_vpc_id
   map_public_ip_on_launch = "false"
  
@@ -24,7 +24,7 @@ resource "aws_subnet" "dev_subnet_private" {
 
 
 resource "aws_subnet" "dev_subnet_db" {
-  cidr_block              = "10.0.10.1/24"
+  cidr_block              = "10.0.10.0/24"
   vpc_id                  = var.dev_vpc_id
   map_public_ip_on_launch = "false"
  
