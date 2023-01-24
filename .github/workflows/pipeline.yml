@@ -2,10 +2,12 @@ name: 'Terraform'
 #testing
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "terraform-testing" ]
   pull_request:
+  workflow_dispatch:
 
 permissions:
+  id_token: write
   contents: read
 
 jobs:
