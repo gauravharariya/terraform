@@ -31,7 +31,7 @@ module "dev_nat" {
   source = "./modules/dev_nat"
   naming= local.naming
   env=var.env
-  depends_on = [module.dev_subnet,module.dev_igt]
+  depends_on = [module.dev_subnet,module.dev_igw]
   dev_subnet_public_id = module.dev_subnet.dev_subnet_public_id
   dev_subnet_private_id = module.dev_subnet.dev_subnet_private_id
   dev_vpc_id= module.dev_vpc.vpc_id
