@@ -1,7 +1,7 @@
 locals {
   naming = "${var.project_name}-${var.short_name}-${var.env}"
 }
-#testing1
+#testing24
 
 # resource "aws_s3_bucket" "terraform_state" {
 #   bucket = "terraform-dataeng-bucket"
