@@ -41,11 +41,12 @@ jobs:
         role-duration-seconds: 900 # the ttl of the session, in seconds.
         aws-region: us-west-2
 
-    - name: Terraform Init
-      run: terraform init
 
     - name: Terraform Format
       run: terraform fmt -check
+
+    - name: Terraform Init
+      run: terraform init
 
     # Generates an execution plan for Terraform
     - name: Terraform Plan
