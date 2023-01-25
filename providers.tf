@@ -1,11 +1,4 @@
 terraform {
-  required_providers {
-    aws = {
-      source  = "hashicorp/aws"
-      version = "~> 4.0"
-    }
-  },
-  
   backend "s3" {
     # Replace this with your bucket name!
     bucket         = "terraform-dataeng-bucket"
