@@ -3,45 +3,58 @@ locals {
 }
 #testing24
 
-# resource "aws_s3_bucket" "terraform_state" {
-#   bucket = "terraform-dataeng-bucket"
+resource "aws_s3_bucket" "terraform_state" {
+  bucket = "terraform-dataeng-bucket"
  
-#   # Prevent accidental deletion of this S3 bucket
-#   lifecycle {
-#     prevent_destroy = true
-#   }
-# }
-
-# resource "aws_s3_bucket_versioning" "enabled" {
-#   bucket = aws_s3_bucket.terraform_state.id
-#   versioning_configuration {
-#     status = "Enabled"
-#   }
-# }
-
-# resource "aws_s3_bucket_public_access_block" "public_access" {
-#   bucket                  = aws_s3_bucket.terraform_state.id
-#   block_public_acls       = true
-#   block_public_policy     = true
-#   ignore_public_acls      = true
-#   restrict_public_buckets = true
-# }
-
-# resource "aws_dynamodb_table" "terraform_locks" {
-#   name         = "terraform-up-and-running-locks"
-#   billing_mode = "PAY_PER_REQUEST"
-#   hash_key     = "LockID"
-
-#   attribute {
-#     name = "LockID"
-#     type = "S"
-#   }
-# }
-module "dev_vpc"{
-  source="./modules/dev_vpc"
-  naming = local.naming
-  env= var.env  
+  # Prevent accidental deletion of this S3 bucket
+  lifecycle {
+    prevent_destroy = true
+  }
 }
+
+resource "aws_s3_bucket_object" "statefile" {
+    bucket = aws_s3_bucket.terraform_state.id
+    acl    = "private"
+    key    = "statefile"
+    source = "/dev/null"
+}
+
+
+
+resource "aws_s3_bucket_versioning" "enabled" {
+  bucket = aws_s3_bucket.terraform_state.id
+  versioning_configuration {
+    status = "Enabled"
+  }
+}
+
+resource "aws_s3_bucket_public_access_block" "public_access" {
+  bucket                  = aws_s3_bucket.terraform_state.id
+  block_public_acls       = true
+  block_public_policy     = true
+  ignore_public_acls      = true
+  restrict_public_buckets = true
+}
+
+resource "aws_dynamodb_table" "terraform_locks" {
+  name         = "terraform-up-and-running-locks"
+  billing_mode = "PAY_PER_REQUEST"
+  hash_key     = "LockID"
+
+  attribute {
+    name = "LockID"
+    type = "S"
+  }
+}
+
+
+
+
+# module "dev_vpc"{
+#   source="./modules/dev_vpc"
+#   naming = local.naming
+#   env= var.env  
+# }
 
 # module "dev_subnet"{
 #   source ="./modules/dev_subnet"
