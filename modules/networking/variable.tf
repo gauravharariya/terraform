@@ -41,3 +41,11 @@ variable "aws_igw_name"{
 variable "route_table_public_name"{
   type=string
 }
+
+variable "aws_nat_gw_name1"{
+  type=string
+}
+
+variable "private_route_table1"{
+  type=string
+}
