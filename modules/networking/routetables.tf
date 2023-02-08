@@ -8,7 +8,7 @@ resource "aws_route_table" "public_rt" {
   }
 
   tags = {
-    name=var.route_table_public_name,
+    Name=var.route_table_public_name,
     env= "dev"
   }
 
