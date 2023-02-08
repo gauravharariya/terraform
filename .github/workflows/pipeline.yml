@@ -45,7 +45,10 @@ jobs:
 
     # Initialize a new or existing Terragrunt working directory by creating initial files, loading any remote state, downloading modules, etc.
     - name: Terragrunt Init
-      run: terragrunt init --terragrunt-non-interactive
+      run: |
+        pwd
+        ls -la
+        terragrunt init --terragrunt-non-interactive
 
 
     # Generates an execution plan for Terragrunt
