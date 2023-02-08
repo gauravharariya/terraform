@@ -3,13 +3,13 @@ include "root" {
 }
 
 terraform {
-  source = "${get_path_to_repo_root()}//modules/vpc"
+  source = "${get_path_to_repo_root()}//modules/networking"
 }
 
 
 inputs = {
   env                  = "dev"
-  cidr_block           = "10.68.32.0/22"
+  cidr_block           = "10.0.0.0/20"
   private_subnet1_cidr = "10.0.0.0/22"
   public_subnet1_cidr  = "10.0.8.0/24"
   db_subnet1_cidr      = "10.0.10.0/24"
