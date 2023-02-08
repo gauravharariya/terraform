@@ -25,6 +25,13 @@ jobs:
     # Checkout the repository to the GitHub Actions runner
     - name: Checkout
       uses: actions/checkout@v3
+
+    - name: configure aws credentials
+      uses: aws-actions/configure-aws-credentials@v1
+      with:
+        role-to-assume: arn:aws:iam::472741099477:role/github-admin
+        role-duration-seconds: 900 # the ttl of the session, in seconds.
+        aws-region: us-west-2
     
     - name: Setup Terraform v1.2.6
       uses: hashicorp/setup-Terraform@v1
@@ -47,7 +54,7 @@ jobs:
     - name: Terragrunt Init
       run: |
         pwd
-        cd live/dev
+        cd live
         ls -la
         terragrunt init --terragrunt-non-interactive
 
