@@ -61,13 +61,17 @@ jobs:
 
     # Generates an execution plan for Terragrunt
     - name: Terragrunt Plan
-      run: terragrunt run-all plan --terragrunt-non-interactive
+      run: |
+        cd live 
+        terragrunt run-all plan --terragrunt-non-interactive
 
       # On push to main, build or change infrastructure according to Terragrunt configuration files
       # Note: It is recommended to set up a required "strict" status check in your repository for "Terragrunt Cloud". See the documentation on "strict" required status checks for more information: https://help.github.com/en/github/administering-a-repository/types-of-required-status-checks
     - name: Terragrunt Apply
       #if: github.ref == 'refs/heads/main' && github.event_name == 'push'
-      run: terragrunt run-all apply --terragrunt-non-interactive
+      run: |
+        cd live
+        terragrunt run-all apply --terragrunt-non-interactive
 
 
     #  # Install the latest version of Terraform CLI and configure the Terraform CLI configuration.
