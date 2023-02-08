@@ -34,6 +34,32 @@ variable "db_subnet1_cidr" {
   type = string
 }
 
+
+variable "private_subnet2_name" {
+  type = string
+}
+
+variable "public_subnet2_name" {
+  type = string
+}
+
+variable "db_subnet2_name" {
+  type = string
+}
+
+variable "private_subnet2_cidr" {
+  type = string
+}
+
+variable "public_subnet2_cidr" {
+  type = string
+}
+
+variable "db_subnet2_cidr" {
+  type = string
+}
+
+
 variable "aws_igw_name"{
   type=string
 }

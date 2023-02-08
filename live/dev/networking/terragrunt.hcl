@@ -11,8 +11,11 @@ inputs = {
   env                  = "dev"
   cidr_block           = "10.0.0.0/20"
   private_subnet1_cidr = "10.0.0.0/22"
+  private_subnet2_cidr = "10.0.4.0/22"
   public_subnet1_cidr  = "10.0.8.0/24"
+  public_subnet2_cidr  = "10.0.9.0/24"
   db_subnet1_cidr      = "10.0.10.0/24"
+  db_subnet2_cidr      = "10.0.11.0/24"
   
 
   endpoint_sg_rules = {
