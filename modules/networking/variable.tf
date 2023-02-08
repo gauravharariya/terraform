@@ -37,3 +37,7 @@ variable "db_subnet1_cidr" {
 variable "aws_igw_name"{
   type=string
 }
+
+variable "route_table_public_name"{
+  type=string
+}

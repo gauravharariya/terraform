@@ -18,7 +18,7 @@ resource "aws_route_table_association" "public_rt_assn" {
 
 
 # Public Subnet ID
-  subnet_id      = var.public_subnet1.id
+  subnet_id      = aws_subnet.public_subnet1.id
 
 #  Route Table ID
   route_table_id = aws_route_table.public_rt.id
