@@ -1,7 +1,7 @@
 locals {
   aws_region                = "us-east-2"
   aws_profile               = "tc"
-  terraform_state_s3_bucket = "rostra-tf-state"
+  terraform_state_s3_bucket = "gaurav-temp-bucket"
   terraform_locks           = lower("rostra-tf-lock-svc")
   env                       = "dev"
 }
