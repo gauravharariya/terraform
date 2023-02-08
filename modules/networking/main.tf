@@ -3,8 +3,8 @@ module "rostra_vpc" {
 
   cidr_block            = var.cidr_block
   vpc_name              = "${var.vpc_name}_${var.env}"
-  vpc_dns_hostname_flag = var.vpc_dns_hostname_flag
-  vpc_dns_support_flag  = var.vpc_dns_support_flag
+  # vpc_dns_hostname_flag = var.vpc_dns_hostname_flag
+  # vpc_dns_support_flag  = var.vpc_dns_support_flag
 
 
   private_subnet1_name = "${var.private_subnet1_name}_${var.env}"
@@ -25,6 +25,6 @@ module "rostra_vpc" {
 
 #   endpoint_sg_rules = var.endpoint_sg_rules
 #   endpoint_sg_name  = "${var.endpoint_sg_name}_${var.env}"
-  vpc_id            = module.rostra_vpc.vpc_id
+  #vpc_id            = module.rostra_vpc.vpc_id
   env               = var.env
 }
