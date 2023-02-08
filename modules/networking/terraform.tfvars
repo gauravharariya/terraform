@@ -7,7 +7,11 @@ private_subnet2_name = "rostra_Private_Subnet_2"
 
 public_subnet1_name = "rostra_Public_Subnet_1"
 
+public_subnet2_name = "rostra_Public_Subnet_2"
+
 db_subnet1_name = "rostra_db_Subnet_1"
+
+db_subnet2_name = "rostra_db_Subnet_2"
 
 private_route_table1 = "rostra_private_rt1"
 
