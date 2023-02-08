@@ -34,3 +34,6 @@ variable "db_subnet1_cidr" {
   type = string
 }
 
+variable "aws_igw_name"{
+  type=string
+}
