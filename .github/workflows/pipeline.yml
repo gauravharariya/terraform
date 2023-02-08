@@ -47,6 +47,7 @@ jobs:
     - name: Terragrunt Init
       run: |
         pwd
+        cd live/dev
         ls -la
         terragrunt init --terragrunt-non-interactive
 
