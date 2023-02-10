@@ -17,8 +17,7 @@ inputs = {
   db_subnet1_cidr      = "10.0.10.0/24"
   db_subnet2_cidr      = "10.0.11.0/24"
   
-
-  endpoint_sg_rules = {
+endpoint_sg_rules = {
     "For All - Ingress - Self VPC" = {
       "type" : "ingress",
       "to_port" : "65535",
