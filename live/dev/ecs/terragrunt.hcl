@@ -19,7 +19,7 @@ dependency "networking" {
 
 inputs = {
  env              = "dev"
-rostra_vpc_id  = [
-    dependency.networking.outputs.vpc_id
-  ]
+ naming           = "dev-rostra"
+ rostra_vpc_id  = [dependency.networking.outputs.vpc_id]
+
 }
