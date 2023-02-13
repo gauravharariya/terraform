@@ -69,3 +69,32 @@ variable "service_desired_count" {
   type    = string
   default = "1"
 }
+
+variable "aws_region" {
+  type=string
+}
+
+variable "ecs_suffix" {
+  type=string
+}
+
+
+variable "cw_log_group_suffix" {
+  type=string
+}
+
+variable "container_image"{
+  type=string
+}
+
+variable "container_port"{
+  type=number
+}
+
+variable "container_memory"{
+  type=number
+}
+
+variable "container_cpu"{
+  type=number
+}

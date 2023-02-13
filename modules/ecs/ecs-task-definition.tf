@@ -1,6 +1,6 @@
 # Service permission define
 resource "aws_iam_role" "ecs_task_execution_role" {
-  name = var.appname_prefix
+  name = "${var.naming}-ecs-execution-role"
 
   assume_role_policy = <<EOF
 {
@@ -61,19 +61,20 @@ resource "aws_iam_role_policy_attachment" "ecs_task_role_policy_attachment" {
   policy_arn = aws_iam_policy.ecs_policy.arn
 }
 
-# # Aws log group
-# resource "aws_cloudwatch_log_group" "cloudwatch_log_group" {
-#   name = "${var.appname_prefix}/${var.appname_prefix}-${var.aws_region}-${var.ecs_suffix}-${var.cw_log_group_suffix}"
+# Aws log group
+resource "aws_cloudwatch_log_group" "cloudwatch_log_group" {
+  name = "${var.naming}/${var.naming}-${var.aws_region}-${var.ecs_suffix}-${var.cw_log_group_suffix}"
 
-#   tags = merge(var.common_tags,
-#     {
-#       Name = "${var.appname_prefix}-${var.aws_region}-${var.ecs_suffix}-${var.cw_log_group_suffix}"
-#   })
-# }
+   tags = {
+    Name = "${var.naming}-cloudwatch-log-group"
+    ENV  = var.env
+  }
+  
+}
 
 # Task Definition  
 resource "aws_ecs_task_definition" "ecs_task_definition" {
-  family                   = "${var.appname_prefix}-${var.ecs_scope}-${var.task_definition_suffix}"
+  family                   = "${var.naming}-${var.ecs_scope}"
   network_mode             = "awsvpc"
   requires_compatibilities = ["FARGATE"]
   cpu                      = var.container_cpu
@@ -83,10 +84,10 @@ resource "aws_ecs_task_definition" "ecs_task_definition" {
 
   container_definitions = jsonencode([
     {
-      name      = "${var.appname_prefix}-${var.ecs_scope}-${var.container_suffix}"
+      name      = "${var.naming}-${var.ecs_scope}"
       image     = "${var.container_image}"
       essential = true
-      portMappings = var.container_port == 0 ? null : [
+      portMappings = [
         {
           protocol      = "tcp"
           containerPort = "${var.container_port}"
@@ -96,8 +97,8 @@ resource "aws_ecs_task_definition" "ecs_task_definition" {
       logConfiguration = {
         logDriver = "awslogs"
         options = {
-          awslogs-group         = "${var.appname_prefix}/${var.appname_prefix}-${var.aws_region}-${var.ecs_suffix}-${var.cw_log_group_suffix}"
-          awslogs-stream-prefix = "${var.appname_prefix}"
+          awslogs-group         = "${var.naming}/${var.naming}-${var.aws_region}-${var.ecs_suffix}-${var.cw_log_group_suffix}"
+          awslogs-stream-prefix = "${var.naming}"
           awslogs-region        = "${var.aws_region}"
         }
       }
@@ -108,8 +109,8 @@ resource "aws_ecs_task_definition" "ecs_task_definition" {
     ignore_changes = [container_definitions]
   }
 
-  tags = merge(var.common_tags,
-    {
-      Name = "${var.appname_prefix}-${var.ecs_scope}-${var.task_definition_suffix}"
-  })
+   tags = {
+    Name = "${var.naming}-taskdefinition"
+    ENV  = var.env
+  }
 }
