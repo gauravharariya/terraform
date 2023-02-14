@@ -35,3 +35,25 @@ remote_state {
     if_exists = "overwrite_terragrunt"
   }
 }
+
+inputs = {
+  resource_suffix = {
+
+    "cf_suffix"              = "cf",
+    "bucket_suffix"          = "bucket",
+    "alb_suffix"             = "alb",
+    "repository_suffix"      = "repository",
+    "service_suffix"         = "service",
+    "tg_suffix"              = "tg",
+    "repository_suffix"      = "repository",
+    "task_policy_suffix"     = "task-policy",
+    "task_definition_suffix" = "task-definition",
+    "ecs_suffix"             = "ecs",
+    "dynamodb_suffix"        = "dynamodb",
+    "cw_log_group_suffix"    = "cw-log-group",
+    "bucket_suffix"          = "bucket",
+    "cluster_suffix"         = "cluster",
+    "guardduty_suffix"       = "gd",
+    "ct_suffix"              = "ct",
+  }
+}
