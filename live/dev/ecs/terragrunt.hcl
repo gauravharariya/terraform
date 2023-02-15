@@ -9,11 +9,11 @@ terraform {
 dependency "networking" {
   config_path = find_in_parent_folders("networking")
 
-  mock_outputs = {
-    vpc_id       = "temporary-dummy-id-1"
-    # aws_private_subnet_2_id       = "temporary-dummy-id-2"
-    # aws_security_group_default_id = "temporary-security-group-dummy-id"
-  }
+  # mock_outputs = {
+  #   vpc_id       = "temporary-dummy-id-1"
+  #   # aws_private_subnet_2_id       = "temporary-dummy-id-2"
+  #   # aws_security_group_default_id = "temporary-security-group-dummy-id"
+  # }
 }
 
 
@@ -21,7 +21,7 @@ inputs = {
  env              = "dev"
  naming           = "dev-rostra"
  rostra_vpc_id    = dependency.networking.outputs.vpc_id
+ private_subnet  =  ["10.0.0.0/22","10.0.4.0/22"]
  aws_region            = "us-east-2"
- 
  cw_log_group_suffix   = "cw_log_group"
 }

@@ -65,10 +65,7 @@ variable "ecs_scope" {
   default = "service"
 }
 
-variable "service_desired_count" {
-  type    = string
-  default = "1"
-}
+
 
 variable "aws_region" {
   type=string
@@ -97,4 +94,41 @@ variable "container_memory"{
 
 variable "container_cpu"{
   type=number
+}
+
+variable "service_desired_count" {
+  type    = string
+  default = "1"
+}
+
+variable "platform_version" {
+  default     = "1.4.0"
+  description = "Platform version on which to run your service."
+}
+
+variable "scheduling_strategy" {
+  description = "scheduling_strategy for daemon"
+  type        = string
+  default     = "REPLICA"
+}
+
+variable "target_group_arn" {
+  description = "int alb target group arn"
+  type        = string
+  default     = ""
+}
+
+variable "container_suffix" {
+  type    = string
+  default = "container"
+}
+
+variable "rostra_vpc_id"{
+  type = string
+}
+
+
+variable "private_subnet"{
+   type        = list(string)
+ description = "private_subnets"
 }
