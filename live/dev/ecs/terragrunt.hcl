@@ -22,10 +22,6 @@ inputs = {
  naming           = "dev-rostra"
  rostra_vpc_id    = dependency.networking.outputs.vpc_id
  aws_region            = "us-east-2"
- #ecs_suffix            =  var.resource_suffix.ecs_suffix
+ 
  cw_log_group_suffix   = "cw_log_group"
- container_image       = "nginx"
- container_cpu         = 512
- container_memory      = 1024
- container_port        = 3000
 }
